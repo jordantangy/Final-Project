@@ -70,8 +70,8 @@ with open('mycsv3.csv','w',newline='') as f: #name the file "mycsv3_[start]_[end
         driver.get('https://www.google.com')
         inputElms = driver.find_elements_by_css_selector('input[name=q]')
         for inputElm in inputElms:
-          #inputElm.send_keys(titles[i] + 'imbd')
-          inputElm.send_keys(truncat.values[i][2] +"imbd")
+          #inputElm.send_keys(titles[i] + 'imdb')
+          inputElm.send_keys(truncat.values[i][2] +"("+truncat[i][3]+") - IMDb")
           inputElm.send_keys(Keys.ENTER)
           time.sleep(1)
           page_source = driver.page_source
