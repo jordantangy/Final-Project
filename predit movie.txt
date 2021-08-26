@@ -1,0 +1,27 @@
+plot = ['An Israeli Special Forces Soldier fakes his death so he can re-emerge in New York City as a hair stylist']
+img = image.load_img('DontMessWithZohan.jpg', target_size=(224,224,3))
+img = image.img_to_array(img)
+img = img/255.0
+plot = np.array(plot)
+img = np.array(img)
+print(img.shape)
+print(plot.shape)
+plot_np = []
+image_np = []
+plot_np.append(plot)
+image_np.append(img)
+plot_np = np.array(plot_np)
+image_np = np.array(image_np)
+
+
+y_prob = mymodel.predict([plot_np,image_np])
+
+genres = data.columns[6:20]
+
+arr = np.array(y_prob)
+top2 = np.argsort(y_prob[0])
+print("The 2 genres predicted for the Movie Poster 'You dont mess with the zohan' are :")
+for i in range(11,13):
+  index = top2[i]
+  print(genres[index])
+print("The expected output was at least 'horror', hence the network succeeded")
